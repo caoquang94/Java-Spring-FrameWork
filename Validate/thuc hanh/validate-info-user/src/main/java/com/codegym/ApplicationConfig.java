@@ -1,4 +1,4 @@
-package com.codegym.service;
+package com.codegym;
 
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
@@ -18,7 +18,6 @@ import org.thymeleaf.templatemode.TemplateMode;
 @EnableWebMvc
 @ComponentScan("com.codegym")
 public class ApplicationConfig extends WebMvcConfigurerAdapter implements ApplicationContextAware {
-
     private ApplicationContext applicationContext;
 
     @Override
@@ -50,4 +49,6 @@ public class ApplicationConfig extends WebMvcConfigurerAdapter implements Applic
         viewResolver.setTemplateEngine(templateEngine());
         return viewResolver;
     }
+
+    
 }

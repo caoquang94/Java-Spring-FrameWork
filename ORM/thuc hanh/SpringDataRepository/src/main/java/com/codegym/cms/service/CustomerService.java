@@ -1,11 +1,13 @@
 package com.codegym.cms.service;
 
-public interface Service<T> {
-    Iterable<T> findAll();
+import com.codegym.cms.model.Customer;
 
-    T findById(Long id);
+public interface CustomerService extends Service<Customer>{
+    Iterable<Customer> findAll();
 
-    void save(T object);
+    Customer findById(Long id);
+
+    void save(Customer customer);
 
     void remove(Long id);
 

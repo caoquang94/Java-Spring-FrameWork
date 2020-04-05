@@ -1,7 +1,7 @@
-package com.codegym.cms.formatter;
+package com.codegym.formatter;
 
-import com.codegym.cms.model.Province;
-import com.codegym.cms.service.ProvinceService;
+import com.codegym.model.Province;
+import com.codegym.service.ProvinceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.Formatter;
 import org.springframework.stereotype.Component;

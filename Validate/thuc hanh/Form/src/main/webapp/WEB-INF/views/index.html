@@ -1,10 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Form</title>
 </head>
 <body>
-$END$
+<form th:object="${user}" th:action="@{/show-User}" method="post" >
+    <table>
+        <tr>
+            <td>First Name:</td>
+            <td><input th:field="*{firstname}"></td>
+            <td th:if="${#fields.hasErrors('firstname')}" th:errors="*{firstname}">Name of length must be between 5 and 45</td>
+        </tr>
+        <tr>
+            <td>Last Name:</td>
+            <td><input th:field="*{lastname}"></td>
+            <td th:if="${#fields.hasErrors('lastname')}" th:errors="*{lastname}">Name of length must be between 5 and 45 </br> Must not be empty</td>
+        </tr>
+        <tr>
+            <td>Phone Number:</td>
+            <td><input th:field="*{phonenumber}"></td>
+            <td th:if="${#fields.hasErrors('phonenumber')}" th:errors="*{phonenumber}">Phone Number must be started 0, between 10 and 11</td>
+        </tr>
+        <tr>
+            <td>Age:</td>
+            <td><input th:field="*{age}"></td>
+            <td th:if="${#fields.hasErrors('age')}" th:errors="*{age}">Must be greater than or equal to 18</td>
+        </tr>
+        <tr>
+            <td>Email:</td>
+            <td><input th:field="*{email}"></td>
+            <td th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email Error</td>
+        </tr>
+        <tr>
+            <td>
+                <button type="submit">Submit</button>
+            </td>
+        </tr>
+    </table>
+</form>
 </body>
 </html>

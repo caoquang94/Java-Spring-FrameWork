@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <th:block th:replace="police/policeLayout::header-css"></th:block>
+    <th:block th:replace="police/policeLayout::datatables-css"></th:block>
+</head>
+
+<body class="nav-md">
+<div class="container body">
+    <div class="main_container">
+        <div class="col-md-3 left_col" th:replace="police/policeLayout::navbar">
+        </div>
+
+        <!-- top navigation -->
+        <div class="top_nav" th:replace="police/policeLayout::topnav">
+        </div>
+        <!-- /top navigation -->
+
+        <!-- page content -->
+        <div class="right_col" role="main">
+            <div class="">
+                <div class="page-title">
+                    <div class="title_left">
+                        <h3>Users <small>Some examples to get you started</small></h3>
+                    </div>
+                </div>
+
+                <div class="clearfix"></div>
+
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 ">
+                        <div class="x_panel">
+                            <div class="x_title">
+                                <h2>C1019G1 <small th:text="term"></small></h2>
+                                <ul class="nav navbar-right panel_toolbox">
+                                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                    </li>
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                            <a class="dropdown-item" href="#">Settings 1</a>
+                                            <a class="dropdown-item" href="#">Settings 2</a>
+                                        </div>
+                                    </li>
+                                    <li><a class="close-link"><i class="fa fa-close"></i></a>
+                                    </li>
+                                </ul>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="x_content">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="card-box table-responsive">
+                                            <table id="policeProvinces-datatables" name="policeProvinces-datatables" class="table table-striped table-bordered" style="width:100%">
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 col-sm-12 ">
+                        <div class="x_panel">
+                            <div class="x_title">
+                                <h2>C1019G1 <small th:text="${term}"></small></h2>
+                                <ul class="nav navbar-right panel_toolbox">
+                                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                    </li>
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                            <a class="dropdown-item" href="#">Settings 1</a>
+                                            <a class="dropdown-item" href="#">Settings 2</a>
+                                        </div>
+                                    </li>
+                                    <li><a class="close-link"><i class="fa fa-close"></i></a>
+                                    </li>
+                                </ul>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="x_content">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="card-box table-responsive">
+                                            <table id="datatable-buttons" class="table table-striped table-bordered" style="width:100%">
+
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+        <!-- /page content -->
+
+        <!-- The Modal -->
+        <div class="modal" id="modalAddEdit" name="modalAddEdit">
+            <div class="modal-dialog">
+                <div class="modal-content">
+
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="modalTitle" th:name="modalTitle"></h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                        <form id="formAddEdit" th:name="formAddEdit">
+                            <input hidden name="id" id="id" >
+                            <div class="row form-group">
+                                <div class="col-3">
+                                    <label>Name</label>
+                                </div>
+                                <div class="col-9">
+                                    <input class="form-control" type="text"
+                                           name="name" id="name"
+                                           data-rule-required=true >
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col-3">
+                                    <label>Address</label>
+                                </div>
+                                <div class="col-9">
+                                    <input class="form-control" type="text"
+                                           name="address" id="address"
+                                           data-rule-required=true >
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col-3">
+                                    <label>PhoneNumber</label>
+                                </div>
+                                <div class="col-9">
+                                    <input class="form-control" type="text"
+                                           name="tel" id="tel"
+                                           data-rule-required=true >
+                                </div>
+                            </div>
+
+<!--                            <div class="row form-group">-->
+<!--                                <div class="col-3">-->
+<!--                                    <label>Province</label>-->
+<!--                                </div>-->
+<!--                                <div class="col-9">-->
+<!--                                    <select class="form-control" name="province" id="province"></select>-->
+<!--                                </div>-->
+<!--                            </div>-->
+                        </form>
+                    </div>
+
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <a href="javascript:;" class="btn btn-primary"
+                           onclick="policeProvinces.save()">Save</a>
+
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- footer content -->
+        <footer th:replace="police/policeLayout::footer">
+        </footer>
+        <!-- /footer content -->
+    </div>
+</div>
+<th:block th:replace="police/policeLayout::block-script"></th:block>
+<th:block th:replace="police/policeLayout::datatables-script"></th:block>
+
+<script>
+    var policeProvinces = {} || policeProvinces;
+    policeProvinces.intTable = function(){
+        $("#policeProvinces-datatables").DataTable({
+            ajax: {
+                url: 'http://localhost:8080/policeProvinces/',
+                method: "GET",
+                datatype: "json",
+                dataSrc: ""
+            },
+            columns: [
+                { data: "name" , name: "Name", title: "Name",orderable: true},
+                { data: "address", name : "Address" , title: "Address"},
+                { data: "tel", name : "PhoneNumber" , title: "PhoneNumber"},
+                { data: "id", name : "Action", title : "Action",sortable: false,
+                    orderable: false ,"render": function ( data, type, row, meta ) {
+                        var str =  "<a href='javascript:;' title='edit policeProvince' onclick='policeProvinces.get("+ data +")'><i class='fa fa-edit'></i></a> " +
+                            "<a href='javascript:;' title='remove policeProvince' onclick='policeProvinces.delete("+ data +")' ><i class='fa fa-trash'></i></a>"
+                        return str ;
+                    }
+                }
+            ]
+        });
+    };
+
+    policeProvinces.addNew = function(){
+        $('#modalTitle').html("Add new policeProvince");
+        policeProvinces.resetForm();
+        $('#modalAddEdit').modal('show');
+    };
+    policeProvinces.initValidation =  function(){
+        $("#modalAddEdit").validate({
+            rules: {
+                address: "required",
+                tel: "required",
+                name:  {
+                    required: true,
+                    minlength: 5
+                },
+                // province: "required"
+            },
+            messages: {
+                address: "Please enter your Address",
+                tel: "Please enter your PhoneNumber",
+                name: {
+                    required: "Please enter a LastName",
+                    minlength: "Your username must consist of at least 5 characters"
+                },
+                // province: "Please enter your Province",
+            }
+        });
+    }
+
+    policeProvinces.resetForm =  function(){
+        $('#formAddEdit')[0].reset();
+        $('#name').val('');
+        $('#address').val('');
+        $('#tel').val('');
+        //$('#province').val('');
+        //
+        var validator = $( "#formAddEdit" ).validate();
+        validator.resetForm();
+    }
+
+    // policeProvinces.initProvinces = function(){
+    //     $.ajax({
+    //         url : "http://localhost:8080/provinces/",
+    //         method : "GET",
+    //         dataType : "json",
+    //         success : function(data){
+    //             $('#province').empty();
+    //             $.each(data, function(i, v){
+    //                 $('#province').append(
+    //                     "<option value='"+ v.id +"'>"+ v.name +"</option>"
+    //                 );
+    //             });
+    //         }
+    //     });
+    // };
+
+
+
+    policeProvinces.get = function(id){
+        console.log('get :'+ id);
+
+        $.ajax({
+            url : "http://localhost:8080/policeProvinces/" + id,
+            method : "GET",
+            dataType : "json",
+            contentType : "application/json",
+            success : function(data){
+                console.log(data);
+                $('#formAddEdit')[0].reset();
+                $('#modalTitle').html("Edit policeProvince");
+                $('#name').val(data.name);
+                $('#address').val(data.address);
+                $('#tel').val(data.tel);
+                $('#id').val(data.id);
+
+                $('#modalAddEdit').modal('show');
+            }
+        });
+    };
+
+    policeProvinces.delete = function(id){
+        bootbox.confirm({
+            title: "Remove policeProvince",
+            message: "Do you want to remove this policeProvince?",
+            buttons: {
+                cancel: {
+                    label: '<i class="fa fa-times"></i> No'
+                },
+                confirm: {
+                    label: '<i class="fa fa-check"></i> Yes'
+                }
+            },
+            callback: function (result) {
+                if(result){
+                    $.ajax({
+                        url : "http://localhost:8080/policeProvinces/" + id,
+                        method: "DELETE",
+                        dataType : "json",
+                        success : function(data){
+                            $("#policeProvinces-datatables").DataTable().ajax.reload();
+                        }
+                    });
+                }
+            }
+        });
+    };
+
+    policeProvinces.save = function(){
+        if ($("#formAddEdit").valid()){
+            if($('#id').val() == 0){
+                var policeProvinceObj = {};
+                policeProvinceObj.firstName = $('#firstName').val();
+                policeProvinceObj.lastName = $('#lastName').val();
+
+                $.ajax({
+                    url : "http://localhost:8080/policeProvinces/",
+                    method : "POST",
+                    dataType : "json",
+                    contentType : "application/json",
+                    data : JSON.stringify(policeProvinceObj),
+                    done: function(){
+                        console.log("POST DONE");
+                        $('#modalAddEdit').modal('hide');
+
+                        $("#policeProvinces-datatables").DataTable().ajax.reload();
+                    },
+                    success : function(data){
+                        console.log("POST success");
+                        $('#modalAddEdit').modal('hide');
+                        $("#policeProvinces-datatables").DataTable().ajax.reload();
+
+                    }
+                });
+            }
+            else{
+                var policeProvinceObj = {};
+                policeProvinceObj.firstName = $('#firstName').val();
+                policeProvinceObj.lastName = $('#lastName').val();
+                policeProvinceObj.id = $('#id').val();
+
+                $.ajax({
+                    url : "http://localhost:8080/policeProvinces/" + policeProvinceObj.id,
+                    method : "PUT",
+                    dataType : "json",
+                    contentType : "application/json",
+                    data : JSON.stringify(policeProvinceObj),
+                    success : function(data){
+                        $('#modalAddEdit').modal('hide');
+                        $("#policeProvinces-datatables").DataTable().ajax.reload();
+                    }
+                });
+            }
+        }
+
+    };
+
+    policeProvinces.init = function(){
+        policeProvinces.intTable();
+        // policeProvinces.initProvinces();
+        policeProvinces.initValidation();
+    };
+
+    $(document).ready(function(){
+        policeProvinces.init();
+    });
+</script>
+</body>
+</html>
